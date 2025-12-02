@@ -234,10 +234,6 @@ Ensure data schema matches requirements of training pipeline.
 
 Open issues if you find bugs or have improvement ideas!
 
-**License**
-
-This project is licensed under the MIT License.
-
 
 **Contact**
 
