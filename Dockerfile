@@ -3,21 +3,13 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies required for numpy/pandas/sklearn
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    gcc \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Install Python dependencies
-COPY requirements.txt .
+# Copy files
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all project files
-COPY . .
+COPY . /app
 
-# Expose port for FastAPI
 EXPOSE 8000
 
-# Start the API
+# Run uvicorn
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
